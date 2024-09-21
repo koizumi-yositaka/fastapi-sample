@@ -45,7 +45,7 @@ jobs:
         env:
           IMAGE_NAME: ${{needs.build-and-push-image.outputs.IMAGE_NAME}}
         run: |
-          yq - i "(.spec.template.spec.containers[] | select(.name==\"fastapi-sample\")).image=\"$IMAGE_NAME\"" manifests/fastapi-sample/deployment.yaml    
+          yq -i "(.spec.template.spec.containers[] | select(.name==\"fastapi-sample\")).image=\"$IMAGE_NAME\"" manifests/fastapi-sample/deployment.yaml    
       - name: Create PR
         uses: peter-evans/create-pull-request@v5
         with: 
